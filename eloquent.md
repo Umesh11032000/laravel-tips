@@ -12,7 +12,7 @@ Here's how you can do it:
 
 ```php
 // Get search query
-$search = $_GET['search'] ?? '';
+$search = $request->search;
 
 // Get all user activities
 $activities = UserActivity::query()
@@ -21,6 +21,5 @@ $activities = UserActivity::query()
             $query->where('body', 'like', '%' . $search . '%');
         });
     })
-    ->paginate(10)
-    ->appends(['search' => $search]);
+    ->paginate(10);
 ```
